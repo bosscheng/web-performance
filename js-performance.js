@@ -1682,11 +1682,19 @@
         addEventListener(window, 'beforeunload', function () {
             _handlePageLeave();
         });
-        //
+        // page hide
         addEventListener(window, 'pagehide', function () {
             _handlePageLeave();
         });
-        //
+
+        // 
+        addEventListener(document, 'visibilitychange', function () {
+            if (document.visibilityState !== 'visible') {
+                _handlePageLeave();
+            }
+        });
+
+        // page unload
         addEventListener(window, 'unload', function () {
             _handlePageLeave();
         });
